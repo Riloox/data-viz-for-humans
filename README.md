@@ -1,48 +1,50 @@
 # Data Viz for Humans
 
-A skill that teaches AI agents why a chart helps a human understand, instead of just which chart to draw.
+## Charts that humans can actually read.
 
-AI models default to pattern-matched chart choices: pie for shares, rainbow colors, 3D decorations, truncated axes. These choices fail because they ignore how human vision actually works. This skill replaces the pattern matching with a grounded model of human perception, a task-to-chart mapping, and hard audit checklists.
+AI models choose charts by pattern matching. The word "share" triggers a pie, continuous data gets a rainbow, 3D depth distorts the numbers, and the one insight the chart exists to show gets buried under everything else.
 
-## What it contains
+This skill replaces those instincts with the science of how human vision works. Every chart it produces answers one question, encodes it on the perceptual channel humans judge most accurately, and passes an audit that catches a lie.
 
-The skill package lives in `skills/data-viz-for-humans/`:
-
-- SKILL.md: the core mental model, a 6-step workflow, invariant rules, and the anti-patterns AI models fall into.
-- references/perception-science.md: why charts work, from the perception literature (pre-attentive processing, encoding accuracy hierarchy, working memory, Gestalt).
-- references/task-to-chart.md: question-first mapping across the 9 visualization families, expanded from the FT Visual Vocabulary.
-- references/design-and-honesty.md: design and deception rules turned into testable conditions.
-- references/checklists.md: binary audits every chart must pass before it ships.
-- examples/before-after.md: clanker-default vs fixed chart pairs with line-by-line rationale.
-- validation/adversarial-test.md: how an unaided model's designs scored against the rules (the evidence the rules bite).
+```
+ "share of revenue"                 "share of revenue"
+ pie, 6 rainbow slices              single 100% stacked bar
+ reader squints at the legend       segments labeled, colorblind-safe
+ reader cannot find the 3%          reader reads it in 3 seconds
+```
 
 ## Install
 
-### Preferred: npx skills (Claude Code, Codex, and other supported agents)
-
-The repo follows the open skills layout (`skills/<name>/SKILL.md`), so it installs through the skills CLI:
-
-```
+```bash
 npx skills add Riloox/data-viz-for-humans@data-viz-for-humans -g -a claude-code -a codex -a hermes-agent --copy -y
 ```
 
-- One `-a` flag per agent (comma-separated lists are rejected); `-a '*'` installs to every agent the CLI supports.
-- `claude-code` targets `~/.claude/skills`, `codex` targets `~/.agents/skills` (the shared agent home), `hermes-agent` targets the Hermes profile skills dir.
-- `-g` installs at user level; `--copy` materializes real files (default is symlinks; use it on Windows or if you move repos around).
+Works with every agent the skills CLI supports: Claude Code, Codex, Hermes, OpenCode, and more.
 
-### Hermes
+Hermes without the CLI: copy `skills/data-viz-for-humans` to your profile skills dir (`%LOCALAPPDATA%\hermes\skills\` on Windows, `~/.local/share/hermes/skills/` on Linux/macOS).
 
-Copy the `skills/data-viz-for-humans` directory to your profile skills dir:
+## What's inside
+
+- `SKILL.md` — the mental model, a 6-step workflow, invariant rules, and the anti-patterns AI models default to.
+- `references/perception-science.md` — why charts work: the encoding-accuracy hierarchy (Cleveland & McGill), pre-attentive processing, working memory, Gestalt. Each principle with its source.
+- `references/task-to-chart.md` — question-first mapping across the 9 visualization families, expanded from the FT Visual Vocabulary.
+- `references/design-and-honesty.md` — Tufte and Cairo turned into testable rules: data-ink, lie factor, axis integrity, color, overplotting.
+- `references/checklists.md` — six binary audits every chart must pass: 5-second, squint, colorblind, honesty, grandmother, pre-chart.
+- `examples/before-after.md` — clanker-default vs fixed chart pairs with line-by-line rationale.
+- `validation/adversarial-test.md` — how an unaided model scored against the rules: 8/14 compliant, and both hard failures were the exact anti-patterns this skill forbids.
+
+## The one rule that matters
 
 ```
-Windows: %LOCALAPPDATA%\hermes\skills\
-Linux/macOS: ~/.local/share/hermes/skills/ or ~/AppData/Local/hermes/skills/
+position > length > angle > area > volume > color
 ```
 
-### Manual (any agent)
+Humans judge magnitudes from position and length with near-perfect accuracy, and from angle, area, or color with steadily worse reliability. That is why bars beat pies and why rainbows are never the answer. Cleveland & McGill, JASA 1984; replicated at scale by Heer & Bostock, 2010.
 
-Copy the `skills/data-viz-for-humans` directory to `~/.claude/skills/`, `~/.codex/skills/`, or `~/.agents/skills/`.
+## Credits
 
-## Source
+Perception science: Cleveland & McGill, Larkin & Simon, Heer & Bostock, Tufte, Bertin, Munzner, Cairo. Task taxonomy: the FT Visual Vocabulary (Financial-Times/chart-doctor).
 
-Research and canonical references are cited inside the reference documents. Key sources: Cleveland & McGill (JASA 1984, DOI 10.1080/01621459.1984.10478080), Larkin & Simon (Cognitive Science 1987), Tufte, Bertin, Munzner, Cairo, and the FT Visual Vocabulary (Financial-Times/chart-doctor).
+## License
+
+MIT.
