@@ -23,11 +23,12 @@ The skill package lives in `skills/data-viz-for-humans/`:
 The repo follows the open skills layout (`skills/<name>/SKILL.md`), so it installs through the skills CLI:
 
 ```
-npx skills add Riloox/data-viz-for-humans@data-viz-for-humans -g --copy
+npx skills add Riloox/data-viz-for-humans@data-viz-for-humans -g -a claude-code -a codex -a hermes-agent --copy -y
 ```
 
-- `-g` installs at user level; add `-a claude,codex` to restrict targets, or `-a '*'` for every agent the CLI supports.
-- `--copy` materializes real files (default is symlinks; use it on Windows or if you move repos around).
+- One `-a` flag per agent (comma-separated lists are rejected); `-a '*'` installs to every agent the CLI supports.
+- `claude-code` targets `~/.claude/skills`, `codex` targets `~/.agents/skills` (the shared agent home), `hermes-agent` targets the Hermes profile skills dir.
+- `-g` installs at user level; `--copy` materializes real files (default is symlinks; use it on Windows or if you move repos around).
 - Prerequisite: the repo is private, so git auth for your GitHub account must be available (e.g. `gh auth login`).
 
 ### Hermes
