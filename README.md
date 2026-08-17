@@ -25,6 +25,8 @@ Hermes without the CLI: copy `skills/data-viz-for-humans` to your profile skills
 
 ## What's inside
 
+The skill is mirrored in two layouts, both kept in sync: `skills/data-viz-for-humans/` (for the skills CLI and skills.sh) and `.github/skills/data-viz-for-humans/` (for GitHub's skills directory).
+
 - `SKILL.md` — the mental model, a 6-step workflow, invariant rules, and the anti-patterns AI models default to.
 - `references/perception-science.md` — why charts work: the encoding-accuracy hierarchy (Cleveland & McGill), pre-attentive processing, working memory, Gestalt. Each principle with its source.
 - `references/task-to-chart.md` — question-first mapping across the 9 visualization families, expanded from the FT Visual Vocabulary.
