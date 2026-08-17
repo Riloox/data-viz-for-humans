@@ -22,7 +22,7 @@ Lie factor = (size of effect shown in the graphic) / (size of effect in the data
 - Lines and scatter: cropping is allowed only when the visible band is the message (e.g. stock price around 95-105) and the crop is labeled, and the crop must never exaggerate a difference the chart claims to show. When in doubt, show zero.
 - Log scale: only for orders of magnitude, power-law, or multiplicative series. The axis must be labeled "log scale" and ticks must be at powers of ten.
 - Time axis: must be to scale. Irregularly spaced data drawn at regular intervals is deception.
-- Dual y-axes: forbidden for comparing two series. If two series must appear together, normalize both to indices (change relative to a base) or use small multiples. The eye compares lines, and separate scales make that comparison wrong.
+- Dual y-axes: forbidden for comparing two series. If two series must appear together, normalize both to indices (change relative to a base) or use small multiples. The eye compares lines, and separate scales make that comparison wrong. The one exception: a Pareto cumulative-share line on a secondary 0-100% axis is the same data normalized to its own total, not a second measure, so the shape of the line is a legitimately comparable statement.
 
 - Pass: every axis stated in the caption (scale, units, baseline, binning).
 - Fail: any of the above violated.

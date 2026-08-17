@@ -1,7 +1,7 @@
 ---
 name: data-viz-for-humans
 description: Use when creating any chart or choosing between visualization types. Grounds chart choices in human perception science.
-version: 1.0.0
+version: 1.0.1
 author: Riloox
 license: MIT
 platforms: [linux, macos, windows]
@@ -82,7 +82,7 @@ Run the six audits in references/checklists.md. The chart is not finished until 
 
 1. The accuracy hierarchy is absolute: position > length > angle > area > volume > color. Never encode a magnitude comparison as angle or area when position or length is available.
 2. Bars start at zero on magnitude axes. Never truncate a magnitude axis to exaggerate a difference.
-3. Never: 3D charts; pie/donut with more than 3 slices or whenever magnitudes matter; rainbow color scales for continuous data; dual axes comparing unrelated series; log axes without a stated reason and labeled ticks.
+3. Never: 3D charts; pie/donut with more than 3 slices or whenever magnitudes matter; rainbow color scales for continuous data; dual axes comparing unrelated series (the one exception: a Pareto cumulative-share line is the same data normalized to the same total, not an unrelated measure); log axes without a stated reason and labeled ticks.
 4. One chart answers one question. More questions mean small multiples or separate charts.
 5. Every stated insight must be traceable to marks actually present in the chart (DIRECT claim). Anything inferred beyond the marks (causes, forecasts, domain knowledge) must be labeled as inference, so the reader can tell chart fact from model speculation.
 6. Know the reader: data literacy, color vision, context, screen vs print, attention budget. A chart is a communication act, not data storage.

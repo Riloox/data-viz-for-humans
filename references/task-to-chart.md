@@ -54,7 +54,7 @@ Question: "How much, and compared to how much?"
 - Channel: length from a common baseline (position).
 - Types: bar, column, paired bar/column (two groups side by side), lollipop, dot plot, proportional stacked bar (part-to-whole with magnitude), isotype pictograms (when counting units matters, e.g. public communication), proportional symbol (only for order-of-magnitude feel, never precise comparison).
 - Never: pie for magnitude; bubble for precise comparison (area channel); log axis without a stated reason; bars not starting at zero.
-- Notes: bars must start at zero; the baseline is the lie detector. When bars exceed about 20, switch to a dot strip or lollipop so labels fit and the tail stays readable. Radar and parallel coordinates belong here only for special multivariate comparison; most readers cannot judge them, so they fail the grandmother test.
+- Notes: bars must start at zero; the baseline is the lie detector. When bars exceed about 20, switch to a dot strip or lollipop so labels fit and the tail stays readable. Radar and parallel coordinates belong here only for special multivariate comparison; most readers cannot judge them, so they fail the grandmother test. Pareto variant: a cumulative-share line on a secondary 0-100% axis is acceptable because it is the same data normalized to the same total, not an unrelated measure; keep the line dashed and label the axis.
 
 ## 7. Part-to-whole
 
