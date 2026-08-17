@@ -6,39 +6,42 @@ AI models default to pattern-matched chart choices: pie for shares, rainbow colo
 
 ## What it contains
 
+The skill package lives in `skills/data-viz-for-humans/`:
+
 - SKILL.md: the core mental model, a 6-step workflow, invariant rules, and the anti-patterns AI models fall into.
 - references/perception-science.md: why charts work, from the perception literature (pre-attentive processing, encoding accuracy hierarchy, working memory, Gestalt).
 - references/task-to-chart.md: question-first mapping across the 9 visualization families, expanded from the FT Visual Vocabulary.
 - references/design-and-honesty.md: design and deception rules turned into testable conditions.
 - references/checklists.md: binary audits every chart must pass before it ships.
 - examples/before-after.md: clanker-default vs fixed chart pairs with line-by-line rationale.
+- validation/adversarial-test.md: how an unaided model's designs scored against the rules (the evidence the rules bite).
 
 ## Install
 
+### Preferred: npx skills (Claude Code, Codex, and other supported agents)
+
+The repo follows the open skills layout (`skills/<name>/SKILL.md`), so it installs through the skills CLI:
+
+```
+npx skills add Riloox/data-viz-for-humans@data-viz-for-humans -g --copy
+```
+
+- `-g` installs at user level; add `-a claude,codex` to restrict targets, or `-a '*'` for every agent the CLI supports.
+- `--copy` materializes real files (default is symlinks; use it on Windows or if you move repos around).
+- Prerequisite: the repo is private, so git auth for your GitHub account must be available (e.g. `gh auth login`).
+
 ### Hermes
 
-Copy the `data-viz-for-humans` directory to your profile skills dir:
+Copy the `skills/data-viz-for-humans` directory to your profile skills dir:
 
 ```
 Windows: %LOCALAPPDATA%\hermes\skills\
 Linux/macOS: ~/.local/share/hermes/skills/ or ~/AppData/Local/hermes/skills/
 ```
 
-### Claude Code
+### Manual (any agent)
 
-Copy the `data-viz-for-humans` directory to `~/.claude/skills/`. It is auto-discovered.
-
-### Codex CLI
-
-Copy the `data-viz-for-humans` directory to `~/.codex/skills/`. To force-load it in a repo, add to `AGENTS.md`:
-
-```
-@skills data-viz-for-humans
-```
-
-### Any agent
-
-Copy the `data-viz-for-humans` directory to `~/.agents/skills/` (shared skill home used by several CLIs).
+Copy the `skills/data-viz-for-humans` directory to `~/.claude/skills/`, `~/.codex/skills/`, or `~/.agents/skills/`.
 
 ## Source
 
